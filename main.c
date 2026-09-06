@@ -11,7 +11,11 @@ const char* htaContent =
 "</head><body><div class='bar'><input type='text' id='u' value='www.bing.com'><button onclick='nav()'>GO</button></div>"
 "<iframe id='f' src='https://www.bing.com' application='yes'></iframe></body></html>";
 
-int main() {
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    (void)hInstance;
+    (void)hPrevInstance;
+    (void)lpCmdLine;
+    (void)nCmdShow;
     char tempPath[MAX_PATH];
     char htaFilePath[MAX_PATH];
     DWORD pathLen = GetTempPath(MAX_PATH, tempPath);
@@ -28,7 +32,6 @@ int main() {
     HINSTANCE result = ShellExecute(NULL, "open", htaFilePath, NULL, NULL, SW_SHOWNORMAL);
 
     if ((INT_PTR)result <= 32) {
-        printf("ERROR: %ld\n", (long)result);
         return 1;
     }
 
