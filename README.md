@@ -32,6 +32,16 @@ gcc -o IE-Engine-Bridge.exe main.c -mwindows
 cl main.c /link shell32.lib user32.lib /subsystem:windows
 ```
 
+## GitHub Actions 自动编译与发布
+
+仓库包含 `/.github/workflows/build-release.yml` 工作流：
+
+- 推送 `v*` 标签时会自动在 `windows-latest` 上编译 `IE-Engine-Bridge.exe`。
+- 编译产物会作为 Actions Artifact 保存。
+- 同时会自动创建/更新同名 GitHub Release，并上传 `IE-Engine-Bridge.exe` 到该 Release。
+
+你也可以在 Actions 页使用 **Run workflow** 手动触发，并填写要发布的标签（例如 `v1.0.0`）。
+
 ## Usage
 1. Run `IE-Engine-Bridge.exe`.
 2. A window will appear using the legacy Internet Explorer engine.
